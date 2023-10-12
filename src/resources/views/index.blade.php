@@ -23,17 +23,17 @@
       <section class="study-hours">
         <div class="today-wrapper">
           <div class="study-hours-title">Today</div>
-          <div class="study-hours-hour" id="studyHoursToday">0</div>
+          <div class="study-hours-hour" id="studyHoursToday">{{ $studyHoursToday }}</div>
           <div class="study-hours-unit">hour</div>
         </div>
         <div class="month-wrapper">
           <div class="study-hours-title">Month</div>
-          <div class="study-hours-hour" id="studyHoursMonth">0</div>
+          <div class="study-hours-hour" id="studyHoursMonth">{{ $studyHoursMonth }}</div>
           <div class="study-hours-unit">hour</div>
         </div>
         <div class="total-wrapper">
           <div class="study-hours-title">Total</div>
-          <div class="study-hours-hour" id="studyHoursTotal">0</div>
+          <div class="study-hours-hour" id="studyHoursTotal">{{ $studyHoursTotal }}</div>
           <div class="study-hours-unit">hour</div>
         </div>
       </section>

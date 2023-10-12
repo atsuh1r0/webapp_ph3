@@ -14,7 +14,28 @@ class StudyTimeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        // 今月の学習時間を取得する
+        // 今月の1日の0時0分0秒
+        $startOfMonth = now()->startOfMonth();
+        // 今月の最終日の23時59分59秒
+        $endOfMonth = now()->endOfMonth();
+        $studyHoursMonth = StudyTime::whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->sum('time');
+        // 今日の学習時間を取得する
+        // 今日の0時0分0秒
+        $startOfDay = now()->startOfDay();
+        // 今日の23時59分59秒
+        $endOfDay = now()->endOfDay();
+        $studyHoursToday = StudyTime::whereBetween('created_at', [$startOfDay, $endOfDay])
+            ->sum('time');
+        // 累計の学習時間を取得する
+        $studyHoursTotal = StudyTime::sum('time');
+
+        return view('index', [
+            'studyHoursMonth' => $studyHoursMonth,
+            'studyHoursToday' => $studyHoursToday,
+            'studyHoursTotal' => $studyHoursTotal,
+        ]);
     }
 
     /**
