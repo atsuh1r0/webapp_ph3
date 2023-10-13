@@ -14,6 +14,10 @@ RUN apk add --no-cache \
   && composer self-update --2 \
   && echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 
+RUN curl -sSL https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64 -o mhsendmail \
+    && chmod +x mhsendmail \
+    && mv mhsendmail /usr/local/bin/mhsendmail
+
 # PHPの設定ファイルをコピー
 COPY php.ini /usr/local/etc/php/conf.d/custom.ini
 
