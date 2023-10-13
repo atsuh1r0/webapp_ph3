@@ -29,7 +29,6 @@ services:
   mysql:
     image: mysql:8.0
     command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
-    # platform: linux/arm64
     volumes:
       - ./docker/db-store:/var/lib/mysql
       - ./docker/mysql/config:/etc/mysql/conf.d
