@@ -15,16 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [StudyTimeController::class, 'index'])->name('study_time.index');
-Route::get('/get-barChart-data', [StudyTimeController::class, 'getBarChartData']);
-Route::get('/get-languagesPieChart-data', [StudyTimeController::class, 'getLanguagesPieChartData']);
-Route::get('/get-contentsPieChart-data', [StudyTimeController::class, 'getContentsPieChartData']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/', [StudyTimeController::class, 'index'])->name('study_time.index');
+    Route::get('/get-barChart-data', [StudyTimeController::class, 'getBarChartData']);
+    Route::get('/get-languagesPieChart-data', [StudyTimeController::class, 'getLanguagesPieChartData']);
+    Route::get('/get-contentsPieChart-data', [StudyTimeController::class, 'getContentsPieChartData']);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
